@@ -3,7 +3,7 @@ name: Nextcloud and OnlyOffice
 displayName: Nextcloud/Onlyoffice
 categories: ["apps/file-management", "apps/popular", "apps/file-manager"]
 homepage: https://github.com/HidoraSwiss/manifest-nextcloud-onlyoffice
-logo: https://github.com/HidoraSwiss/manifest-nextcloud-onlyoffice/images/nextcloud-onlyoffice.png
+logo: https://raw.githubusercontent.com/HidoraSwiss/manifest-nextcloud-onlyoffice/master/images/nextcloud-onlyoffice.png
 description: |
  **These two tools will allow you to work in real time with your collaborators. You can access to your document and modify it directly on your tablet or even smartphone.**
 
