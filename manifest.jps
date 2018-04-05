@@ -1,0 +1,58 @@
+type: install
+name: Nextcloud and OnlyOffice
+displayName: Nextcloud/Onlyoffice
+categories: ["apps/file-management", "apps/popular", "apps/file-manager"]
+homepage: https://github.com/HidoraSwiss/manifest-nextcloud-onlyoffice
+logo: https://github.com/HidoraSwiss/manifest-nextcloud-onlyoffice/images/nextcloud-onlyoffice.png
+description: |
+ **These two tools will allow you to work in real time with your collaborators. You can access to your document and modify it directly on your tablet or even smartphone.**
+
+globals:
+  db_user: nextcloud
+  db_pass: ${fn.password(15)}
+  db_name: nextcloud
+  admin_name: admin
+  admin_pass: ${fn.password(10)}
+
+nodes:
+  - image: nextcloud
+    count: 1
+    cloudlets: 16
+    nodeGroup: cp
+    env:
+     MYSQL_PASSWORD: ${globals.db_pass}
+     MYSQL_DATABASE: ${globals.db_name}
+     MYSQL_USER: ${globals.db_user}
+     MYSQL_HOST: DB
+     NEXTCLOUD_ADMIN_USER: ${globals.admin_name}
+     NEXTCLOUD_ADMIN_PASSWORD: ${globals.admin_pass}
+    links:
+     - sqldb:DB
+    volumes:
+     - /var/www/html/data
+     - /var/www/html
+      
+  - image: mariadb
+    count: 1
+    cloudlets: 16
+    nodeGroup: sqldb
+    env:
+     MYSQL_PASSWORD: ${globals.db_pass}
+     MYSQL_DATABASE: ${globals.db_name}
+     MYSQL_USER: ${globals.db_user}
+     MYSQL_RANDOM_ROOT_PASSWORD: true
+    volumes:
+     - /var/www/html/data
+
+  - image: onlyoffice/documentserver
+    count: 1
+    cloudlets: 16
+    nodeGroup: extra
+
+success: |
+  ## Nextcloud is ready to use
+  **Username**: ${globals.admin_name}
+  
+  **Password**: ${globals.admin_pass}
+  
+  **To activate OnlyOffice on Nextcloud, follow this link : [https://github.com/HidoraSwiss/manifest-nextcloud-onlyoffice](https://github.com/HidoraSwiss/manifest-nextcloud-onlyoffice)**
