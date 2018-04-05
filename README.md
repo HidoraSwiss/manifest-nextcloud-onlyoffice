@@ -1,4 +1,4 @@
-![Nextcloud / Onlyoffice](https://github.com/HidoraSwiss/manifest-nextcloud-onlyoffice/images/nextcloud-onlyoffice.png)
+![Nextcloud / Onlyoffice](/images/nextcloud-onlyoffice.png)
 
 ## Nextcloud 
 Nextcloud puts your data at your fingertips, under your control.
